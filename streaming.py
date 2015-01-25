@@ -1,7 +1,29 @@
-# Based on the tweepy streaming example
-# Stefano Guglielmetti 2015 - jeko@jeko.net
+# Copyright (c) 2015 Stefano Guglielmetti - jeko@jeko.net
+# https://github.com/amicojeko
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+
+# this script is based upon the official tweepy streamin example
+# https://github.com/tweepy/tweepy/blob/master/examples/streaming.py
 
 from __future__ import absolute_import, print_function
+
 import os
 from subprocess import call
 from tweepy.streaming import StreamListener
@@ -26,16 +48,19 @@ access_token_secret=""
 search_string = '#jekotest'
 
 class StdOutListener(StreamListener):
-    """ A listener handles tweets are the received from the stream.
-    This is a basic listener that just prints received tweets to stdout.
-
     """
+    A listener handles tweets are the received from the stream.
+    This is a basic listener that just prints received tweets to stdout.
+    """
+
     def on_data(self, data):
-        call(["/usr/bin/python", script_path + "/go.py"]) 
-        
+        # I call an external script because the Arduino's Bridge library
+        # confilcts with the tweepy library
+        call(["/usr/bin/python", script_path + "/go.py"])
         return True
 
     def on_error(self, status):
+        # TODO: Put some error handling here
         return False
 
 if __name__ == '__main__':
