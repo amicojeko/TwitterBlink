@@ -48,6 +48,9 @@ and get your consumer key and consumer secret. Then, generate an access token an
 and, while in the python folder, clone the Twitter Blink example
 
 		$ git clone git@github.com:amicojeko/TwitterBlink.git
+don't forget to make the kill_processes.sh script executable!
+		
+		$ chmod +x kill_processes.sh
 
 6. Then use vi or nano (I personally installed vim) to put your twitter app configuration data into the streaming.py script, and to configure the string to be searched inside the Twitter Stream Maelstrom
 
