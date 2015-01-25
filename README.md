@@ -1,4 +1,5 @@
 # Arduino Yún + Twitter Streaming API blink example
+![image](http://i.imgur.com/gwWNge2l.jpg)
 
 This is a simple example on how to run some code on the Arduino side of the Arduino Yún on specific events fired through the Twitter Streaming API
 
